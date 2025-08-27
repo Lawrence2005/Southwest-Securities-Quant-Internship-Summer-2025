@@ -10,7 +10,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from scipy.stats import spearmanr
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as pl
 
 DATA_FILE_NAME = "stock_price_vol_d.txt"
 

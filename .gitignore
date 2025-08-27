@@ -1,0 +1,11 @@
+# Virtual environments
+**/venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets
+**/.env
+
+Stock-Return-Prediction-via-Deep-Learning/stock_data.csv

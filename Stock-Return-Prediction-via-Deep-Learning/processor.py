@@ -246,7 +246,8 @@ class MetricsMonitor:
         residuals = self.y_true - self.y_pred
 
         plt.figure()
-        plt.hist(residuals, bins=50, alpha=0.7)
+        plt.hist(residuals, bins=50, alpha=0.7, label = 'Residuals')
+        plt.legend()
         plt.title("Residual Distribution")
         plt.savefig("Residuals.png")
         plt.close()
@@ -267,7 +268,8 @@ class MetricsMonitor:
                       for i in range(len(self.y_pred)-window)]
         
         plt.figure()
-        plt.plot(rolling_ic)
+        plt.plot(rolling_ic, label="Rolling IC")
+        plt.legend()
         plt.title(f"Rolling IC (window={window})")
         plt.xlabel("Index")
         plt.ylabel("IC")

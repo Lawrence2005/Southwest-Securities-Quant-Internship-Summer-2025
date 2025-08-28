@@ -230,7 +230,7 @@ class MetricsMonitor:
         plt.ylabel("Loss")
         plt.legend()
         plt.title("Training vs Validation Loss")
-        plt.savefig("loss_curve.png")
+        plt.savefig("Loss_Curve.png")
         plt.close()
 
     def plot_pred_vs_true(self, n=200):

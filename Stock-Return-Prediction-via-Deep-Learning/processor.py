@@ -10,7 +10,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from scipy.stats import spearmanr
 
-import matplotlib.pyplot as pl
+import matplotlib.pyplot as plt
 
 DATA_FILE_NAME = "stock_price_vol_d.txt"
 
@@ -222,28 +222,38 @@ class MetricsMonitor:
         if train_losses is None or val_losses is None:
             print("⚠️ No training/validation loss provided.")
             return
+
+        plt.figure()
         plt.plot(train_losses, label="Train Loss")
         plt.plot(val_losses, label="Validation Loss")
         plt.xlabel("Epoch")
         plt.ylabel("Loss")
         plt.legend()
         plt.title("Training vs Validation Loss")
-        plt.savefig("loss_curve.png")
+        plt.savefig("Loss_Curve.png")
+        plt.close()
 
     def plot_pred_vs_true(self, n=200):
+        plt.figure()
         plt.plot(self.y_true[:n], label="True")
         plt.plot(self.y_pred[:n], label="Pred")
         plt.legend()
         plt.title(f"Prediction vs True (first {n} samples)")
         plt.savefig("Pred_vs_True.png")
+        plt.close()
 
     def plot_residuals(self):
         residuals = self.y_true - self.y_pred
-        plt.hist(residuals, bins=50, alpha=0.7)
+
+        plt.figure()
+        plt.hist(residuals, bins=50, alpha=0.7, label = 'Residuals')
+        plt.legend()
         plt.title("Residual Distribution")
         plt.savefig("Residuals.png")
+        plt.close()
 
     def plot_scatter(self):
+        plt.figure()
         plt.scatter(self.y_true, self.y_pred, alpha=0.5)
         min_val, max_val = min(self.y_true.min(), self.y_pred.min()), max(self.y_true.max(), self.y_pred.max())
         plt.plot([min_val, max_val], [min_val, max_val], "r--")
@@ -251,15 +261,20 @@ class MetricsMonitor:
         plt.ylabel("Predicted")
         plt.title("Pred vs True Scatter")
         plt.savefig("Scatter.png")
+        plt.close()
 
     def plot_rolling_ic(self, window=50):
         rolling_ic = [np.corrcoef(self.y_pred[i:i+window], self.y_true[i:i+window])[0,1] 
                       for i in range(len(self.y_pred)-window)]
-        plt.plot(rolling_ic)
+        
+        plt.figure()
+        plt.plot(rolling_ic, label="Rolling IC")
+        plt.legend()
         plt.title(f"Rolling IC (window={window})")
         plt.xlabel("Index")
         plt.ylabel("IC")
         plt.savefig("Rolling_IC.png")
+        plt.close()
 
     def run_all(self, train_losses=None, val_losses=None):
         print("📊 Metrics Summary Done")

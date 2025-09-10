@@ -131,13 +131,13 @@
 
 | Strategy         | Sharpe(raw) | Win Rate       | Verdict | Notes  |
 |------------------|-------------|----------------|---------|--------|
-| vwap_strat1      | 1.25        | ___            | ✅ Good | ___    |
-| vwap_strat2      | 0.1         | -              | ❌ Bad  | ___    |
-| rank_st          | ___         | -              | ❌ Bad  | ___    |
-| correlation_st   | ___         | ___            | ➖ Mid  | ___    |
-| amplitude_st     | ___         | -              | ➖ Mid  | ___    |
-| close_pos_st     | ___         | ___            | ✅ Good | ___    |
-| volume_st        | ___         | -              | ➖ Mid  | ___    |
-| reversal_st      | ___         | ___            | ➖ OK   | ___    |
-| rank_reversal_st | ___         | -              | ❌ Bad  | ___    |
-| momentum_st      | ___         | -              | ❌ Bad  | ___    |
+| vwap_strat1      | 1.25        | 53.5%          | ✅ Good | ___    |
+| vwap_strat2      | 0.1         | 52.5%          | ❌ Bad  | ___    |
+| rank_st          | 0.65        | 50.2%          | ➖ Mid  | ___    |
+| correlation_st   | 0.18        | 51.8%          | ❌ Bad  | ___    |
+| amplitude_st     | 0.84        | 51.9%          | 👍 Ok   | ___    |
+| close_pos_st     | 1.15        | 52.9%          | ✅ Good | ___    |
+| volume_st        | 0.1         | 52.9%          | ❌ Bad  | ___    |
+| reversal_st      | 0.97        | 52.6%          | 👍 Ok   | ___    |
+| rank_reversal_st | 0.5         | 51.7%          | ➖ Mid  | ___    |
+| momentum_st      | 0.74        | 51.7%          | 👍 Ok   | ___    |

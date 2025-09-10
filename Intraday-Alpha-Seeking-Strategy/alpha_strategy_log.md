@@ -29,7 +29,7 @@
 ## rank_st
 - **Idea**: 首个开盘价 vs 最后收盘价 cross-sectional rank 的反转逻辑
 - **Formula**:
-  factor = Open / Close - 1
+  factor = Open / Close - 1 \
   signal = -1 if 因子值排名低 else +1 
 - **Data Used**: 当日 Open, Close（多只股票横截面） 
 - **Performance**:  
@@ -43,7 +43,7 @@
 ## correlation_st
 - **Idea**: 过去10日 Open 与 Volume 的相关性，乘 -1  
 - **Formula**:  
-  factor_t = -Corr(Open_{t-9..t}, Vol_{t-9..t})
+  factor_t = -Corr(Open_{t-9..t}, Vol_{t-9..t}) \
   signal = -1 if factor_t > 0 else +1
 - **Performance**:  
   - Sharpe(raw): 0.18
@@ -68,7 +68,7 @@
 ## close_pos_st
 - **Idea**: 收盘在当日振幅区间中的位置  
 - **Formula**:  
-  Pos = (Close - Low) / (High - Low) 
+  Pos = (Close - Low) / (High - Low) \
   signal = -1 if 收盘价位于当日振幅前40% else +1
 - **Performance**:  
   - Sharpe(raw): 1.15
@@ -81,7 +81,7 @@
 ## volume_st
 - **Idea**: 当日总成交量 vs 过去 N 日均值  
 - **Formula**:  
-  ratio = Vol_t / MA_N(Vol)
+  ratio = Vol_t / MA_N(Vol) \
   signal = -1 if ratio > 1.5 else +1
 - **Performance**:  
   - Sharpe(raw): 0.1

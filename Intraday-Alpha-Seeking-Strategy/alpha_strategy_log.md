@@ -78,7 +78,7 @@
 
 ---
 
-## volume_st
+## volume_st1
 - **Idea**: 当日总成交量 vs 过去 N 日均值  
 - **Formula**:  
   ratio = Vol_t / MA_N(Vol) \
@@ -127,6 +127,66 @@
 
 ---
 
+## volume_st2
+- **Idea**: 当日主要交易量价格 vs VWAP
+- **Formula**:  
+  signal = -1 if 当日大部分交易量价格小于VWAP else +1
+- **Performance**:  
+  - Sharpe(raw): 0.25
+  - Win Rate: 51.7%
+- **Verdict**: ❌ Bad
+- **Notes**: ___  
+
+---
+
+## volume_st3
+- **Idea**: 在日中和日末RVOL攀升 反转（潜在利润实现点）
+- **Formula**:  
+  signal = -1 if 在任意时间点RVOL极大且价格上涨 else +1
+- **Performance**:  
+  - Sharpe(raw): 0.7
+  - Win Rate: 51.85%
+- **Verdict**: 👍 Ok
+- **Notes**: ___  
+
+---
+
+## return_st
+- **Idea**: 当日收益正负不对称性 反转（潜在利润实现点）
+- **Formula**:  
+  signal = -1 if 正收益显著大于负收益 else +1
+- **Performance**:  
+  - Sharpe(raw): 0.59
+  - Win Rate: 52.1%
+- **Verdict**: ➖ Mid
+- **Notes**: ___  
+
+---
+
+## spread_st
+- **Idea**: 当日首开盘价与末收盘价差 vs 当日振幅 趋势方向
+- **Formula**:  
+  signal = -1 if 净价差相较振幅小且盘末跌 或净价差相较振幅大且盘末涨 else +1
+- **Performance**:  
+  - Sharpe(raw): 0.32
+  - Win Rate: 50.6%
+- **Verdict**: ❌ Bad
+- **Notes**: ___  
+
+---
+
+## momentum_st2
+- **Idea**: 当日盘末收益 反转
+- **Formula**:  
+  signal = -1 if 盘末见涨 else +1
+- **Performance**:  
+  - Sharpe(raw): 1.26
+  - Win Rate: 52.2%
+- **Verdict**: ✅ Good 
+- **Notes**: ___  
+
+---
+
 ## 🗂 Summary Table
 
 | Strategy         | Sharpe(raw) | Win Rate       | Verdict | Notes  |
@@ -137,7 +197,12 @@
 | correlation_st   | 0.18        | 51.8%          | ❌ Bad  | ___    |
 | amplitude_st     | 0.84        | 51.9%          | 👍 Ok   | ___    |
 | close_pos_st     | 1.15        | 52.9%          | ✅ Good | ___    |
-| volume_st        | 0.1         | 52.9%          | ❌ Bad  | ___    |
+| volume_st1       | 0.1         | 52.9%          | ❌ Bad  | ___    |
 | reversal_st      | 0.97        | 52.6%          | 👍 Ok   | ___    |
 | rank_reversal_st | 0.5         | 51.7%          | ➖ Mid  | ___    |
 | momentum_st      | 0.74        | 51.7%          | 👍 Ok   | ___    |
+| volume_st2       | 0.25        | 51.7%          | ❌ Bad  | ___    |
+| volume_st3       | 0.7         | 51.85%         | 👍 Ok   | ___    |
+| return_st        | 0.59        | 52.1%          | ➖ Mid  | ___    |
+| spread_st        | 0.32        | 50.6%          | ❌ Bad  | ___    |
+| momentum_st2     | 1.26        | 52.2%          | ✅ Good | ___    |
